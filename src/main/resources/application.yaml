@@ -1,6 +1,10 @@
 spring:
   application:
     name: api-gateway
+  security:
+    user:
+      name: user
+      password: pass1234
 
 server:
   port: 8050
