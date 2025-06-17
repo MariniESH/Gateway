@@ -6,5 +6,8 @@ spring:
       name: user
       password: pass1234
 
+logging:
+  level:
+    web: debug
 server:
   port: 8050
