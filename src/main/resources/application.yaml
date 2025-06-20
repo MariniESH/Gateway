@@ -2,9 +2,23 @@ spring:
   application:
     name: api-gateway
   security:
-    user:
-      name: user
-      password: pass1234
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: spring-with-test-scope
+            client-secret: 952VFPsd5Mmfx2hLKK85NhaKPgjMdnzF
+            provider: keycloak
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8085/realms/demo/protocol/openid-connect/auth
+            token-uri: http://localhost:8085/realms/demo/protocol/openid-connect/token
+            user-info-uri: http://localhost:8085/realms/demo/protocol/openid-connect/userinfo
+            jwk-set-uri: http://localhost:8085/realms/demo/protocol/openid-connect/certs
+            issuer-uri: http://localhost:8085/realms/demo
 
 logging:
   level:

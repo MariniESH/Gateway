@@ -10,12 +10,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GatewayConfiguration {
 
-    private final AuthenticationFilter authenticationFilter;
-
-    public GatewayConfiguration(AuthenticationFilter authenticationFilter) {
-        this.authenticationFilter = authenticationFilter;
-
-    }
+//    private final AuthenticationFilter authenticationFilter;
+//
+//    public GatewayConfiguration(AuthenticationFilter authenticationFilter) {
+//        this.authenticationFilter = authenticationFilter;
+//
+//    }
 
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder,  HeaderLoggingFilter headerLoggingFilter) {
@@ -23,10 +23,10 @@ public class GatewayConfiguration {
         String docenteAlunni = "http://localhost:8081";
         return builder.routes()
                 .route(r -> r.path("/corsi/**", "/iscrizioni/**")
-                        .filters(f -> f.filter(headerLoggingFilter))
+//                        .filters(f -> f.filter(headerLoggingFilter))
                         .uri(corso))
                 .route(r -> r.path("/alunni/**", "/docenti/**")
-                        .filters(f -> f.filter(headerLoggingFilter))
+//                        .filters(f -> f.filter(headerLoggingFilter))
                         .uri(docenteAlunni))
                 .build();
     }
